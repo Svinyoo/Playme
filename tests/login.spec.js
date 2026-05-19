@@ -1,15 +1,16 @@
 import { test, expect } from '@playwright/test';
+import {Login} from '../Pages/Login.page';
+
+test('Test for LoginPage', async ({ page }) => {
+
+  const login = new Login(page);
+
+  await login.goto();
+  await login.FillUsernamePassword('visual_user', 'secret_sauce');
+  await login.clickLogin();
 
 
-test.beforeEach(async({page}) => {
-   await page.goto('https://www.saucedemo.com/'); 
-})
 
-test('Login', async ({ page }) => {
-  await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill('visual_user');
-    await page.locator('[data-test="password"]').fill('secret_sauce')
-    await page.locator('[data-test="login-button"]').click();
     await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     await page.locator('[data-test="shopping-cart-link"]').click();
     await page.locator('[data-test="cart-desc-label"]').click();
