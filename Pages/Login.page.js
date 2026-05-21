@@ -32,3 +32,16 @@ baseurl = 'https://www.saucedemo.com/';
 
   }
 
+export class LoginErrorMessage {
+/***
+ * @param {Page} page
+ */
+ constructor(page) {
+      this.page = page;
+    }
+
+  async getErrorMessage() {
+    return await this.page.locator('[data-test="error"]').textContent();
+  }
+
+}
