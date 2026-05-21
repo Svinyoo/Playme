@@ -1,11 +1,13 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../Pages/ิbase'
 import { Login, LoginErrorMessage } from '../Pages/Login.page';
 import { Cartandcheckoutpage } from '../Pages/Cart.page';
 
 //* Test for LoginPage and Cart and Checkout workflow on saucedemo.com *//
-test('Test for LoginPage', async ({ page }) => {
-  const login = new Login(page);
-  const cartandcheckout = new Cartandcheckoutpage(page);
+test('Test for LoginPage', async ({ login, cartandcheckout }) => {
+
+  // const login = new Login(page);-- this is now being passed as a fixture from the test-setup file, so we don't need to create a new instance here.
+  // const cartandcheckout = new Cartandcheckoutpage(page);
 
   await login.goto();
   await login.FillUsernamePassword('visual_user', 'secret_sauce');
@@ -22,10 +24,10 @@ test('Test for LoginPage', async ({ page }) => {
 
 
 /*Test for LoginPage with invalid credentials*/ 
-test('Test for LoginPage with invalid credentials', async ({ page }) => {
+test('Test for LoginPage with invalid credentials', async ({ LoginErrorMessage }) => {
 
-  const login = new Login(page);
-  const loginErrorMessage = new LoginErrorMessage(page);
+  // const login = new Login(page);
+  // const loginErrorMessage = new LoginErrorMessage(page);
 
   await login.goto();
   await login.FillUsernamePassword('invalid_user', 'invalid_password');
