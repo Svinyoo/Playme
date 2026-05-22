@@ -3,13 +3,19 @@ import { test } from '../Pages/ิbase'
 import { Login, LoginErrorMessage } from '../Pages/Login.page';
 import { Cartandcheckoutpage } from '../Pages/Cart.page';
 
+test.beforeEach (async ({ login }) => {
+    await login.goto();
+});
+
+
+
 //* Test for LoginPage and Cart and Checkout workflow on saucedemo.com *//
 test('Test for LoginPage', async ({ login, cartandcheckout }) => {
 
   // const login = new Login(page);-- this is now being passed as a fixture from the test-setup file, so we don't need to create a new instance here.
   // const cartandcheckout = new Cartandcheckoutpage(page);
 
-  await login.goto();
+  // await login.goto();
   await login.FillUsernamePassword('visual_user', 'secret_sauce');
   await login.clickLogin();
 
@@ -29,7 +35,7 @@ test('Test for LoginPage with invalid credentials', async ({ login,LoginErrorMes
   // const login = new Login(page);
   // const loginErrorMessage = new LoginErrorMessage(page);
 
-  await login.goto();
+  // await login.goto();
   await login.FillUsernamePassword('invalid_user', 'invalid_password');
   await login.clickLogin();
 
