@@ -1,10 +1,12 @@
 import { test as base } from '@playwright/test';
-import { Login } from '../Login.page';
-import { Cartandcheckoutpage } from '../Cart.page';
+import { Login , LoginErrorMessage } from './Login.page';
+import { Cartandcheckoutpage } from './Cart.page';
+
 
 type baseFixtures = {
     login: Login;
     cartandcheckout: Cartandcheckoutpage;
+    LoginErrorMessage: LoginErrorMessage;
 };
 
 export const test = base.extend<baseFixtures>({

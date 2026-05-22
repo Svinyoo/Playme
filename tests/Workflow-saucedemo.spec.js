@@ -24,7 +24,7 @@ test('Test for LoginPage', async ({ login, cartandcheckout }) => {
 
 
 /*Test for LoginPage with invalid credentials*/ 
-test('Test for LoginPage with invalid credentials', async ({ LoginErrorMessage }) => {
+test('Test for LoginPage with invalid credentials', async ({ login,LoginErrorMessage }) => {
 
   // const login = new Login(page);
   // const loginErrorMessage = new LoginErrorMessage(page);
@@ -33,5 +33,5 @@ test('Test for LoginPage with invalid credentials', async ({ LoginErrorMessage }
   await login.FillUsernamePassword('invalid_user', 'invalid_password');
   await login.clickLogin();
 
-  await expect(await loginErrorMessage.getErrorMessage()).toBe("Epic sadface: Username and password do not match any user in this service");
+  await expect(await LoginErrorMessage.getErrorMessage()).toBe("Epic sadface: Username and password do not match any user in this service");
 });
