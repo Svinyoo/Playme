@@ -1,7 +1,8 @@
 import { expect } from '@playwright/test';
-import { test } from '../Pages/ิbase'
+import { test } from '../Pages/base'
 import { Login, LoginErrorMessage } from '../Pages/Login.page';
 import { Cartandcheckoutpage } from '../Pages/Cart.page';
+import { Aboutpage } from '../Pages/About.page';
 
 test.beforeEach (async ({ login }) => {
     await login.goto();
@@ -40,4 +41,14 @@ test('Test for LoginPage with invalid credentials', async ({ login,LoginErrorMes
   await login.clickLogin();
 
   await expect(await LoginErrorMessage.getErrorMessage()).toBe("Epic sadface: Username and password do not match any user in this service");
+});
+
+
+
+test('Test for About page' , async ({ login, aboutpage }) => {
+  await login.FillUsernamePassword('visual_user', 'secret_sauce');
+  await login.clickLogin();
+
+  await aboutpage.ClickAbout();
+
 });
