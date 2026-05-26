@@ -20,6 +20,10 @@ async ClickAbout() {
     await expect(this.page.getByText('About')).toBeVisible();
     await this.page.locator(this.locatorAbout).click();
      await expect(this.page).toHaveURL('https://saucelabs.com/');
+
+     await this.page.getByRole('banner').getByText('Solutions', { exact: true }).click();
+     await this.page.getByRole('link', { name: 'location Visual testing' }).click();
+     await expect(this.page).toHaveURL('https://saucelabs.com/products/visual-testing');
   }
   
 
