@@ -3,6 +3,9 @@ import { test } from '../Pages/base'
 import { Login, LoginErrorMessage } from '../Pages/Login.page';
 import { Cartandcheckoutpage } from '../Pages/Cart.page';
 import { Aboutpage } from '../Pages/About.page';
+import { validUsers } from '../test-data/login-data'; // Importing validUsers from login-data.js
+import { invalidUsers } from '../test-data/login-data'; // Importing invalidUsers from login-data.js
+import { problemUsers } from '../test-data/login-data'; // Importing problemUsers from login-data.js
 
 test.beforeEach (async ({ login }) => {
     await login.goto();
@@ -52,3 +55,14 @@ test('Test for About page' , async ({ login, aboutpage }) => {
   await aboutpage.ClickAbout();
 
 });
+
+
+//test data from login-data.js//
+
+validUsers.forEach(({ username, password }) => {
+  test(`Login successfully with valid credentials: ${username}`, async ({ login }) => {
+    await login.FillUsernamePassword(username, password);
+    await login.clickLogin(); 
+  
+  })})
+
