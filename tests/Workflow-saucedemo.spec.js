@@ -9,7 +9,7 @@ test.beforeEach (async ({ login }) => {
 });
 
 
-
+test.describe('LoginPage and Cart and Checkout workflow on saucedemo.com', () => {
 //* Test for LoginPage and Cart and Checkout workflow on saucedemo.com *//
 test('Test for LoginPage', async ({ login, cartandcheckout }) => {
 
@@ -28,7 +28,7 @@ test('Test for LoginPage', async ({ login, cartandcheckout }) => {
   await cartandcheckout.clickContinue();
   await cartandcheckout.clickFinish();
 });
-
+});
 
 /*Test for LoginPage with invalid credentials*/ 
 test('Test for LoginPage with invalid credentials', async ({ login,LoginErrorMessage }) => {
