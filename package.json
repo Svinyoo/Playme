@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:auth": "playwright test \"e2e/Authens Test.spec.ts\" --project=chromium"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
